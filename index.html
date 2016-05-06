@@ -2,323 +2,405 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-	<meta name="description" content="Calcite-Maps Demo - ArcGIS">
-	<meta name="author" content="">
-	<title>Super-Duper Extent Helper 4.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="description" content="Calcite-Maps Demo - ArcGIS">
+  <meta name="author" content="">
+  <title>Super-Duper Extent Helper 4.x</title>
 
-	<!-- Calcite-Maps -->
-	<!-- <link rel="stylesheet" href="../../dist/css/calcite-maps-bootstrap-arcgis-4.x.min.css"> -->
-	<link rel="stylesheet" href="calcite/css/calcite-maps-bootstrap-arcgis-4.x.min.css">
+  <!-- Calcite-Maps -->
+  <link rel="stylesheet" href="calcite/css/calcite-maps-bootstrap-arcgis-4.x.min.css">
 
-	<!-- ArcGIS JS 4.0 NOTE: This is a QA build. Use at own risk! -->
-	<link rel="stylesheet" href="http://jsqa.arcgis.com/4.0/esri/css/main.css">
+  <!-- ArcGIS JS 4.0 NOTE: This is a QA build. Use at own risk! -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
 
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="assets/css/style.css">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="assets/images/styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/images/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 
-	<style>
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-		}
-	</style>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <body class="calcite calcite-maps map-position-absolute nav-position-top nav-space-all zoom-top-left theme-inline-left">
 
-	<!-- Navbar -->
+  <!-- Navbar -->
 
-	<nav class="navbar navbar-fixed-top navbar-text-light calcite-dark-blue-75">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand">
-					<span class="esri-icon esri-icon-map-pin"></span>
-				</a>
-				<div class="navbar-info">
-					<div class="navbar-title text-overflow">Super-Duper Extent Helper 4.x</div>
-					<div class="navbar-subtitle text-overflow">This tool is designed to help determine Web Mercator and Geographic extents for constructing new maps with ArcGIS JS 4.x</div>
-				</div>
-			</div>
+  <nav class="navbar navbar-fixed-top navbar-text-light calcite-dark-blue-75">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">
+          <span class="esri-icon esri-icon-map-pin"></span>
+        </a>
+        <div class="navbar-info">
+          <div class="navbar-title text-overflow">Super-Duper Extent Helper 4.x</div>
+          <div class="navbar-subtitle text-overflow">Find Web Mercator and geographic extents for constructing new maps with ArcGIS JS 4.x</div>
+        </div>
+      </div>
 
-			<!-- Navbar collapse -->
+      <!-- Navbar collapse -->
 
-			<div id="mainNav" class="collapse navbar-collapse" aria-expanded="false">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a id="mapNav" class="hidden-xs hidden-sm" href="#2dTab" aria-controls="2Dtab" aria-expanded="true" role="tab" data-toggle="tab" data-tooltip="tip" title="2D View" data-placement="top">Map</a></li>
-					<li class="active"><a id="sceneNav" class="hidden-xs hidden-sm" href="#3dTab" aria-controls="3Dtab" role="tab" data-tooltip="tip" data-toggle="tab" title="3D View" data-placement="top">Scene</a></li>
-					<li>
-						<form id="searchNav" class="navbar-form navbar-search hidden-xs visible-sm visible-md visible-lg">
-							<div id="searchNavDiv"></div>
-						</form>
-					</li>
-					<!-- Secondary Nav - All other options -->
-					<li class="dropdown" role="presentation">
-						<a class="dropdown-toggle hidden-xs" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
-						<ul class="dropdown-menu">
-							<li><a role="button" data-target="#panelInfo" aria-haspopup="true"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
-							<li><a class="visible-xs" role="button" data-target="#panelSearch" aria-haspopup="true"><span class="glyphicon glyphicon-search"></span> Search</a></li>
-							<li><a role="button" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
-						</ul>
-					</li>
-				</ul>
-				<!--/.nav -->
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-		<!--/.container-fluid -->
-	</nav>
-	<!--/.navbar -->
+      <div id="mainNav" class="collapse navbar-collapse" aria-expanded="false">
+        <ul class="nav navbar-nav navbar-right">
 
+          <li class="dropdown" role="presentation">
+            <a class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">2D Map <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a id="4xmap" class="hidden-xs hidden-sm" href="#" aria-controls="4xtab" aria-expanded="true">4.x (Coming soon)</a></li>
+              <li><a id="3xmap" class="hidden-xs hidden-sm" href="http://bsnider.github.io/web-javascript/super-duper-extent-helper/index.html" target="_blank" aria-controls="3xtab" aria-expanded="true">3.x</a></li>
+            </ul>
+          </li>
 
+          <li class="active"><a id="sceneNav" class="hidden-xs hidden-sm" href="#3dTab" aria-controls="3Dtab" role="tab" data-tooltip="tip" title="3D View" data-placement="top">3D Scene</a></li>
 
+          <li><a role="" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
 
+          <li><a href="https://github.com/bsnider/super-duper-extent-helper-4" target="_blank" aria-haspopup="true" data-tooltip="tip" title="Coming soon"><i class="fa fa-github" aria-hidden="true"></i></span> Github</a></li>
 
+          <li>
+            <form id="searchNav" class="navbar-form navbar-search hidden-xs visible-sm visible-md visible-lg">
+              <div id="searchNavDiv"></div>
+            </form>
+          </li>
+          <li><a class="visible-xs" role="button" data-target="#panelSearch" aria-haspopup="true"><span class="glyphicon glyphicon-search"></span> Search</a></li>
 
-	<!-- Center Modal -->
-	<div class="modal fade" id="centerModal" role="dialog">
-		<!-- Modal content-->
-		<div class="modal-dialog modal-md">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title">Center</h4>
-				</div>
-				<div class="modal-body">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-1"> </div>
-							<div class="col-md-8">
-								<div id="search"></div>
-							</div>
-						</div>
-					</div>
-					<br>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-	</div>
-	<!-- /Center Modal -->
+        </ul>
+        <!--/.nav -->
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+  <!--/.navbar -->
 
+  <!-- Map Container  -->
 
-	<!-- Map Container  -->
+  <div class="map-container">
+    <div id="hiddenPre">
 
-	<div class="map-container">
-		<div id="tabContainer" class="tab-content">
-			<div id="2dTab" class="tab-pane fade" role="tabpanel">
-				<div id="mapViewDiv" class="map-position-absolute">
-				</div>
-			</div>
-			<div id="3dTab" class="tab-pane fade in active" role="tabpanel">
-				<div id="sceneViewDiv" class="map-position-absolute">
+      <!-- these are the pre elements hidden behind the map -->
+      <pre style="" id="centerModalText"></pre>
+      <pre style="" id="cameraModalText"></pre>
 
-						<div role="button" tabindex="0" class="esri-widget-button esri-widget esri-component esri-interactive" id="showElevation">
-							<span data-dojo-attach-point="_iconNode" aria-hidden="true" class="esri-icon icon-mountains" style="font-size: 25px;" title="Reset compass orientation"></span>
-							<!-- <span data-dojo-attach-point="_iconNode" aria-hidden="true" class="esri-icon icon-mountains" title="Toggle elevation"></span> -->
-							<!-- <img id="elevationImg" data-dojo-attach-point="_iconNode" aria-hidden="true" src="assets/images/elevation.png" title="Toggle elevation"></img>
-							<i class="fa fa-camera-retro fa-lg"></i> -->
-							<span class="esri-icon-font-fallback-text">Toggle elevation</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.container -->
+    </div>
+    <div id="tabContainer" class="tab-content">
+      <div id="2dTab" class="tab-pane fade" role="tabpanel">
+        <div id="mapViewDiv" class="map-position-absolute">
+        </div>
+      </div>
+      <div id="3dTab" class="tab-pane fade in active" role="tabpanel">
+        <div id="sceneViewDiv" class="map-position-absolute">
+
+          <div role="button" tabindex="0" class="esri-widget-button esri-widget esri-component esri-interactive" id="showElevation" visible="false">
+            <span data-dojo-attach-point="_iconNode" aria-hidden="true" class="esri-icon icon-mountains" style="font-size: 25px;" title="Toggle elevation"></span>
+            <span class="esri-icon-font-fallback-text">Toggle elevation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
 
 
-	<!-- Panel -->
+  <!-- Panel -->
 
-	<div class="panel-container">
-		<div id="panelAccordion" class="panel-group" role="tablist" aria-multiselectable="true">
+  <div class="panel-container">
+    <div id="panelAccordion" class="panel-group" role="tablist" aria-multiselectable="true">
 
-			<!-- Info Panel -->
+      <!-- Search Panel -->
 
-			<div id="panelInfo" class="panel panel-default collapse">
-				<div id="headingInfo" class="panel-heading" role="tab">
-					<div class="panel-title">
-						<a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo" data-parent="#panelAccordion" aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info</a>
-						<a class="panel-close" role="button" data-toggle="collapse" data-target="#panelInfo"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-					</div>
-				</div>
-				<div id="collapseInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingInfo">
-					<div class="panel-body">
-						<p>This is a great place to describe what your application is about.</p>
-					</div>
-				</div>
-			</div>
+      <div id="panelSearch" class="panel panel-default collapse hidden-sm hidden-md hidden-lg">
+        <div id="headingSearch" class="panel-heading" role="tab">
+          <div class="panel-title">
+            <a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseSearch" data-parent="#panelAccordion" aria-expanded="false" aria-controls="collapseSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
+            <a class="panel-close" role="button" data-toggle="collapse" data-target="#panelSearch"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch">
+          <div class="panel-body panel-overflow-visible">
+            <div id="searchPanelDiv"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Basemaps Panel -->
+
+      <div id="panelBasemaps" class="panel panel-default collapse">
+        <div id="headingBasemaps" class="panel-heading" role="tab">
+          <div class="panel-title">
+            <a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseBasemaps" aria-expanded="false" data-parent="#panelAccordion" aria-controls="collapseBasemaps"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Basemaps</a>
+            <a class="panel-close" role="button" data-toggle="collapse" data-target="#panelBasemaps"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div id="collapseBasemaps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBasemaps">
+          <div class="panel-body">
+            <select id="selectBasemapPanel" class="form-control">
+              <option value="streets" data-vector="vector-streets">Streets</option>
+              <option value="satellite" data-vector="satellite">Satellite</option>
+              <option value="hybrid" data-vector="hybrid">Hybrid</option>
+              <option value="national-geographic" data-vector="national-geographic">National Geographic</option>
+              <option value="topo" data-vector="vector-streets-relief">Topographic</option>
+              <option value="gray" data-vector="vector-canvas-light">Gray</option>
+              <option value="dark-gray" data-vector="vector-canvas-dark">Dark Gray</option>
+              <option value="osm" data-vector="osm">Open Street Map</option>
+              <option value="dark-gray" data-vector="vector-streets-night">Streets Night</option>
+              <option value="streets" data-vector="vector-streets-mobile">Streets Mobile</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.panel-group -->
+  </div>
+  <!-- /.panel-container -->
+
+  <!-- Copy Modal -->
+  <div class="modal fade" id="copyModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div id="copyModalId" class="modal-body">
+          <p>The selected text was copied to the clipboard.</p>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /Copy Modal -->
+
+  <!-- Params Modal -->
+  <div class="modal fade" id="paramsModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div id="paramsModalId" class="modal-body">
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+  </div>
+  <!-- /Copy Modal -->
+
+  <!-- Panel -->
+  <div id="propertiesPanelContainer" class="panel-container">
+    <div id="panelAccordion1" class="panel-group" role="tablist" aria-multiselectable="true">
+      <div id="panelParams" class="panel panel-default ">
+
+        <div id="headingParams" class="panel-heading" role="tab">
+          <div class="panel-title">
+            <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseParams" data-parent="#panelAccordion1" aria-expanded="true" aria-controls="collapseParams" style="font-size:19px"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Parameters</a>
+            <a class="panel-close" role="button" href="https://developers.arcgis.com/javascript/beta/api-reference/esri-views-SceneView.html" target="_blank" style="font-size:14px"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+          </div>
+        </div>
+
+        <div id="collapseParams" class="panel-collapse in" role="tabpanel" aria-labelledby="headingCenter">
+
+          <!-- Center Panel -->
+          <div class="panel-body">
+            <span id="centerText" class="preText">
+
+              <div class="row">
+                <div class="col-xs-6">
+                  <div id="centerLabel" style="min-width: 0; font-size:14px; color:#196fa6; "><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Center</div>
+                </div>
+                <div class="col-xs-6">
+                  <button id="centerParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
+
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-4">
+                  <hr>
+                </div>
+              </div>
 
 
-			<!--
-			<article class="card copyArticle">
-								<div class="card-options" onclick="">
-									<ul>
-										<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-									</ul>
-									<button class="open-btn" data-ember-action="501">Open Project</button>
-								</div>
-								<hr>
-								<h6>Card Title</h6>
-								<div class=" calcite-dark-blue-75">
-									<pre id="MouseText"><b>Mouse Location</b>
-										<br>Web Mercator: (X,Y)
-										<br>Lat/long: (X,Y)</pre>
-								</div>
-							</article> -->
+              <label for="basic-url">Geographic Coordinates (Long, Lat):</label>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="input-group input-group-sm">
+                    <!-- <span class="input-group-addon" id="basic-addon2">(</span> -->
+                    <input type="text" id="centerLatLong" class="form-control coord latLng" aria-label="Copy"></input>
+                    <!-- <span class="input-group-addon" id="basic-addon2">)</span> -->
+                    <div class="input-group-btn">
+                      <button id="centerLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-			<!-- Search Panel -->
+              <label for="basic-url">Web Mercator (X, Y):</label>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="centerWebMerc" class="form-control coord webMerc" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="centerMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-			<div id="panelSearch" class="panel panel-default collapse hidden-sm hidden-md hidden-lg">
-				<div id="headingSearch" class="panel-heading" role="tab">
-					<div class="panel-title">
-						<a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseSearch" data-parent="#panelAccordion" aria-expanded="false" aria-controls="collapseSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
-						<a class="panel-close" role="button" data-toggle="collapse" data-target="#panelSearch"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-					</div>
-				</div>
-				<div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSearch">
-					<div class="panel-body panel-overflow-visible">
-						<div id="searchPanelDiv"></div>
-					</div>
-				</div>
-			</div>
+              <label for="basic-url">Z-value (m):</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="centerZVal" class="form-control zee" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="centerZeeRefresh" type="button" class="btn btn-default refreshBtn zeeBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+                <!-- </div> -->
 
-			<!-- Basemaps Panel -->
+              </div>
 
-			<div id="panelBasemaps" class="panel panel-default collapse">
-				<div id="headingBasemaps" class="panel-heading" role="tab">
-					<div class="panel-title">
-						<a class="panel-toggle collapsed" role="button" data-toggle="collapse" href="#collapseBasemaps" aria-expanded="false" data-parent="#panelAccordion" aria-controls="collapseBasemaps"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Basemaps</a>
-						<a class="panel-close" role="button" data-toggle="collapse" data-target="#panelBasemaps"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-					</div>
-				</div>
-				<div id="collapseBasemaps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingBasemaps">
-					<div class="panel-body">
-						<select id="selectBasemapPanel" class="form-control">
-							<option value="streets" data-vector="vector-streets">Streets</option>
-							<option value="satellite" data-vector="satellite">Satellite</option>
-							<option value="hybrid" data-vector="hybrid">Hybrid</option>
-							<option value="national-geographic" data-vector="national-geographic">National Geographic</option>
-							<option value="topo" data-vector="vector-streets-relief">Topographic</option>
-							<option value="gray" data-vector="vector-canvas-light">Gray</option>
-							<option value="dark-gray" data-vector="vector-canvas-dark">Dark Gray</option>
-							<option value="osm" data-vector="osm">Open Street Map</option>
-							<option value="dark-gray" data-vector="vector-streets-night">Streets Night</option>
-							<option value="streets" data-vector="vector-streets-mobile">Streets Mobile</option>
-						</select>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.panel-group -->
-	</div>
-	<!-- /.panel-container -->
+              <hr>
 
+              <div class="row">
+                <div class="col-xs-6">
+                  <div id="cameraLabel" style="min-width: 0; font-size:14px; color:#196fa6; "><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Camera</div>
+                </div>
+                <div class="col-xs-6">
+                  <button id="cameraParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-4">
+                  <hr>
+                </div>
+              </div>
 
-	<!-- Panel -->
+              <label for="basic-url">Field of view (&deg;):</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraFOV" class="form-control fov" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraFOVRefresh" type="button" class="btn btn-default refreshBtn fovBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraFOVCopy" type="button" class="btn btn-default copyBtn fovBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-	<div id="propertiesPanelContainer" class="panel-container">
-		<div id="panelAccordion1" class="panel-group" role="tablist" aria-multiselectable="true">
+              <label for="basic-url">Heading (&deg;):</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraHeading" class="form-control heading" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraHeadingRefresh" type="button" class="btn btn-default refreshBtn headingBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraHeadingCopy" type="button" class="btn btn-default copyBtn headingBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-			<!-- Center Panel -->
+              <label for="basic-url">Tilt (&deg;):</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraTilt" class="form-control tilt" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraTiltRefresh" type="button" class="btn btn-default refreshBtn tiltBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraTiltCopy" type="button" class="btn btn-default copyBtn tiltBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-			<div id="panelCenter" class="panel panel-default ">
-				<div id="headingCenter" class="panel-heading" role="tab">
-					<div class="panel-title">
-						<a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseCenter" data-parent="#panelAccordion1" aria-expanded="true" aria-controls="collapseCenter"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Center</a>
-						<a class="panel-close" role="button" href="https://developers.arcgis.com/javascript/beta/api-reference/esri-views-SceneView.html#center" target="_blank"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
-					</div>
-				</div>
-				<div id="collapseCenter" class="panel-collapse in" role="tabpanel" aria-labelledby="headingCenter">
-					<div class="panel-body">
-						<span id="centerText" class="preText">
-							<b>Geographic Coordinates (Long, Lat):</b>
-							<div id="centerLatLong"></div>
-							<a data-toggle="modal" href="#searchBtn" role="button" data-target="#centerModal"><span class="glyphicon glyphicon-pencil"></span></a>
+              <label for="basic-url">Geographic Coordinates (Long, Lat):</label>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraLatLong" class="form-control coord latLng" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+              <label for="basic-url">Web Mercator (X, Y):</label>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraWebMerc" class="form-control coord webMerc" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-						<b>Web Mercator (X, Y):</b>
-						<div id="centerWebMerc"></div>
+              <label for="basic-url">Z-value (m):</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="cameraZVal" class="form-control zee" aria-label="Copy"></input>
+                    <div class="input-group-btn">
+                      <button id="cameraZeeCopy" type="button" class="btn btn-default refreshBtn zeeBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-						<b>Z-value:</b>
-						<div id="centerZVal"></div>
-						</span>
-					</div>
-				</div>
-			</div>
+            <!-- </div> -->
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- /.panel-params -->
+    </div>
+    <!-- /.panel-group -->
+  </div>
+  <!-- /.panel-container -->
 
-			<!-- Camera Panel -->
+  <!-- ArcGIS JS 4.0 -->
+  <script src="https://js.arcgis.com/4.0/"></script>
 
-			<div id="panelCamera" class="panel panel-default ">
-				<div id="headingCamera" class="panel-heading" role="tab">
-					<div class="panel-title">
-						<a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseCamera" data-parent="#panelAccordion1" aria-expanded="true" aria-controls="collapseCamera"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Camera</a>
-						<a class="panel-close" role="button" href="https://developers.arcgis.com/javascript/beta/api-reference/esri-views-SceneView.html#camera" target="_blank"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
-					</div>
-				</div>
-				<div id="collapseCamera" class="panel-collapse in" role="tabpanel" aria-labelledby="headingCamera">
-					<div class="panel-body">
-						<span id="cameraText" class="preText">
-							<b>Field of view:</b>
-							<div id="cameraFOV"></div>
+  <!-- Main JavaScript file -->
+  <script type="text/javascript" src="assets/js/main.js"></script>
 
-							<b>Heading:</b>
-							<div id="cameraHeading"></div>
-
-							<b>Tilt:</b>
-							<div id="cameraTilt"></div>
-
-							<b>Geographic Coordinates (Long, Lat):</b>
-							<div id="cameraLatLong"></div>
-
-							<b>Web Mercator (X, Y):</b>
-							<div id="cameraWebMerc"></div>
-
-							<b>Z-value:</b>
-							<div id="cameraZVal"></div>
-						</span>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- /.panel-group -->
-	</div>
-	<!-- /.panel-container -->
-
-	<!-- ArcGIS JS 4.0 NOTE: This is a QA build. Use at own risk! -->
-	<script src="http://jsqa.arcgis.com/4.0/"></script>
-
-	<!-- Main JavaScript file -->
-	<script type="text/javascript" src="assets/js/main.js"></script>
-
-	<!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
   ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- jQuery (for Bootstrap's JavaScript plugins). NOTE: You can also use pure Dojo. See examples. -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Include all  plugins or individual files as needed -->
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- jQuery (for Bootstrap's JavaScript plugins). NOTE: You can also use pure Dojo. See examples. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all  plugins or individual files as needed -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<!--script src="../../assets/js/ie10-viewport-bug-workaround.js"></script-->
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <!--script src="../../assets/js/ie10-viewport-bug-workaround.js"></script-->
 
-	<!-- Calcite-Maps -->
-	<!-- <script src="../../dist/js/jquery/calcitemaps.js"></script> -->
-	<script src="calcite/js/jquery/calcitemaps.js"></script>
+  <!-- Calcite-Maps -->
+  <!-- <script src="../../dist/js/jquery/calcitemaps.js"></script> -->
+  <script src="calcite/js/jquery/calcitemaps.js"></script>
 
 
 

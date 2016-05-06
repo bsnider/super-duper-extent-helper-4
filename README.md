@@ -12,4 +12,8 @@ The app is developed with Dojo and jQuery and built on top of the [ArcGIS API fo
 
 * inspired by [@noashx's](http://github.com/noashx) [Extent helper sample](http://noashx.github.io/) and Esri's [Flex Extent Helper](http://help.arcgis.com/en/webapps/flexviewer/extenthelper/flexviewer_extenthelper.html)
 
+* known issue: tooltip is not currently updating
+
+* desired enhancements: shift zoom buttons, north arrow, elevation toggle to right side
+
 NOTE: Please submit pull requests/issues to update to this sample.  I am always looking for ways to make this sample as useful as possible.

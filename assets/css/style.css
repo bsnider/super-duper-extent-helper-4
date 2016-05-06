@@ -8,16 +8,16 @@
   left: 16px;
   font-size: 10px;
 }
-.preText {
+.panel-collapse {
   font-size: 12px;
 }
-.copyArticle{
+.copyArticle {
   z-index: 99;
 }
 .card-options:hover {
-  background: linear-gradient(rgba(0,0,0,.6) 0,rgba(0,0,0,.6) 100%,transparent 100%,rgba(255,255,255,0) 100%);
+  background: linear-gradient(rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, .6) 100%, transparent 100%, rgba(255, 255, 255, 0) 100%);
 }
-#propertiesPanelContainer{
+#propertiesPanelContainer {
   left: 63px;
   right: auto;
 }
@@ -35,7 +35,39 @@
   padding: 12px;
 }
 #elevationImg {
-  width:50px;
-  height:50px;
-  color:#6e6e6e;
+  width: 50px;
+  height: 50px;
+  color: #6e6e6e;
+}
+.panel-body {
+  max-height: 800px !important;
+}
+input {
+  text-align: center;
+}
+.tooltip-inner {
+  white-space: pre-wrap;
+  text-align: left;
+}
+#centerParamsCopy, #cameraParamsCopy {
+  color: #196fa6;
+  position: absolute;
+  right: 0;
+  margin-right: 20px
+}
+
+#cameraParamsCopy {
+  position: absolute;
+top: 0px;
+}
+#centerLabel, #cameraLabel {
+  top:15px;
+  position: absolute;
+}
+#hiddenPre {
+  position: absolute;
+  left: 100px;
+  width: 100px;
+  top: 200px;
+
 }

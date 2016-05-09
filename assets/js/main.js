@@ -51,7 +51,7 @@ require(["esri/Map",
       ui: {
         components: ["zoom", "compass", "attribution"],
         padding: app.uiPadding,
-        position: "top-right"
+        position: "top-left"
       }
     });
 
@@ -78,6 +78,9 @@ require(["esri/Map",
 
     // EXECUTE AFTER MAP INIT //////////////////////////////////////////////////////////////////////////
     app.activeView.then(function() {
+      app.activeView.ui.move("zoom", "top-right");
+      app.activeView.ui.move("compass", "top-right");
+
       searchWidgetNav = createSearchWidget("searchNavDiv");
       searchWidgetPanel = createSearchWidget("searchPanelDiv");
       show3DParams();

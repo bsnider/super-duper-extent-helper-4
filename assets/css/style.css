@@ -18,20 +18,26 @@
   background: linear-gradient(rgba(0, 0, 0, .6) 0, rgba(0, 0, 0, .6) 100%, transparent 100%, rgba(255, 255, 255, 0) 100%);
 }
 #propertiesPanelContainer {
-  left: 63px;
+  left: 15px;
   right: auto;
 }
+
+#panelBasemaps {
+  right: 63px;
+  left: auto;
+}
+
 @media (max-width: 768px) {
   #propertiesPanelContainer {
-    right: 0;
-    left: 47px;
+    right: 47px;
+    left: 0;
     max-width: 100%;
   }
 }
 #showElevation {
   position: absolute;
   top: 130px;
-  left: 15px;
+  right: 15px;
   padding: 12px;
 }
 #elevationImg {

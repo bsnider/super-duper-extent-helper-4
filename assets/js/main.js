@@ -433,37 +433,29 @@ require(["esri/Map",
 
     // COPY TEXT //////////////////////////////////////////////////////////////////////////
     $(".copyBtn").click(function(evt) {
-      var inputRef = $("#" + evt.currentTarget.id).parent().siblings()[0].id;
-      selectText(inputRef);
-      setTimeout(function() {
+      var inputRef = $("#" + evt.currentTarget.id).parent().siblings()[0];
+      window.getSelection().removeAllRanges();
+      inputRef.select();
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();      setTimeout(function() {
         $(copyModal).modal('toggle');
       }, 1000);
     });
 
-    function selectText(inputRef) {
-      window.getSelection().removeAllRanges();
-      $("#centerModalText").select();
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-    }
-
-    //paramsCopy
+    // Params Copy
     $("#centerParamsCopy").click(function(evt) {
-      window.getSelection().removeAllRanges();
-      var copyTextarea = document.querySelector("#centerModalText");
-      var range = document.createRange();
-      range.selectNode(copyTextarea);
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      setTimeout(function() {
-        $(copyModal).modal('toggle');
-      }, 1000);
+      var inputRef = "#centerJSText";
+      selectParamsText(inputRef)
     });
 
     $("#cameraParamsCopy").click(function(evt) {
+      var inputRef = "#cameraJSText";
+      selectParamsText(inputRef)
+    });
+
+    function selectParamsText(inputRef) {
       window.getSelection().removeAllRanges();
-      var copyTextarea = document.querySelector("#cameraModalText");
+      var copyTextarea = document.querySelector(inputRef);
       var range = document.createRange();
       range.selectNode(copyTextarea);
       window.getSelection().addRange(range);
@@ -472,7 +464,7 @@ require(["esri/Map",
       setTimeout(function() {
         $(copyModal).modal('toggle');
       }, 1000);
-    });
+    }
 
     // GET MAP PARAMS //////////////////////////////////////////////////////////////////////////
     function show3DParams(evt) {
@@ -532,13 +524,13 @@ require(["esri/Map",
 
       var params = paramsCenter + paramsCamera
       //$('#centerParamsCopy').tooltip({title: paramsCenter});
-      $('#centerParamsCopy').hover(function() {
-        $('#centerParamsCopy').tooltip({title: paramsCenter});
-      });
-      $('#cameraParamsCopy').tooltip({title: paramsCamera});
+      // $('#centerParamsCopy').hover(function() {
+      //   $('#centerParamsCopy').tooltip({title: paramsCenter});
+      // });
+      // $('#cameraParamsCopy').tooltip({title: paramsCamera});
 
-      $('#centerModalText').text(paramsCenter);
-      $('#cameraModalText').text(paramsCamera);
+      $('#centerJSText').text(paramsCenter);
+      $('#cameraJSText').text(paramsCamera);
 
     }
 

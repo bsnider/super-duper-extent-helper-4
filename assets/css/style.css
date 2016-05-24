@@ -51,29 +51,25 @@
 input {
   text-align: center;
 }
-.tooltip-inner {
-  white-space: pre-wrap;
-  text-align: left;
-}
 #centerParamsCopy, #cameraParamsCopy {
   color: #196fa6;
   position: absolute;
   right: 0;
-  margin-right: 20px
+  margin-right: 20px;
 }
-
 #cameraParamsCopy {
-  position: absolute;
-top: 0px;
+  top: 0px;
 }
 #centerLabel, #cameraLabel {
   top:15px;
   position: absolute;
+  min-width: 0;
+  font-size:14px;
+  color:#000000;
 }
 #hiddenPre {
   position: absolute;
   left: 100px;
   width: 100px;
   top: 200px;
-
 }

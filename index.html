@@ -69,7 +69,7 @@
 
           <li class="active"><a id="sceneNav" class="hidden-xs hidden-sm" href="#3dTab" aria-controls="3Dtab" role="tab" data-tooltip="tip" title="3D View" data-placement="top">3D Scene</a></li>
 
-          <li><a href="#" data-target="#panelBasemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
+          <li><a href="#" data-target="#panelBasemaps" data-tooltip="tip" title="Basemaps" aria-haspopup="true"><span class="glyphicon glyphicon-th-large"></span> Basemaps</a></li>
 
           <li><a href="https://github.com/bsnider/super-duper-extent-helper-4" target="_blank" aria-haspopup="true" data-tooltip="tip" title="Go to repo"><i class="fa fa-github" aria-hidden="true"></i></span> Github</a></li>
 
@@ -95,8 +95,8 @@
     <div id="hiddenPre">
 
       <!-- these are the pre elements hidden behind the map -->
-      <pre style="" id="centerModalText"></pre>
-      <pre style="" id="cameraModalText"></pre>
+      <pre style="" id="centerJSText"></pre>
+      <pre style="" id="cameraJSText"></pre>
 
     </div>
     <div id="tabContainer" class="tab-content">
@@ -217,10 +217,10 @@
 
               <div class="row">
                 <div class="col-xs-6">
-                  <div id="centerLabel" style="min-width: 0; font-size:14px; color:#196fa6; "><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Center</div>
+                  <div id="centerLabel"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Center</div>
                 </div>
                 <div class="col-xs-6">
-                  <button id="centerParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
+                  <button id="centerParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-toggle="modal" data-tooltip="tip" title="Copy" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
 
                 </div>
               </div>
@@ -240,8 +240,8 @@
                     <input type="text" id="centerLatLong" class="form-control coord latLng" aria-label="Copy"></input>
                     <!-- <span class="input-group-addon" id="basic-addon2">)</span> -->
                     <div class="input-group-btn">
-                      <button id="centerLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="centerLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -253,8 +253,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="centerWebMerc" class="form-control coord webMerc" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="centerMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="centerMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="centerMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -266,8 +266,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="centerZVal" class="form-control zee" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="centerZeeRefresh" type="button" class="btn btn-default refreshBtn zeeBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="centerZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="centerZeeRefresh" type="button" class="btn btn-default refreshBtn zeeBtn"  data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -279,10 +279,10 @@
 
               <div class="row">
                 <div class="col-xs-6">
-                  <div id="cameraLabel" style="min-width: 0; font-size:14px; color:#196fa6; "><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Camera</div>
+                  <div id="cameraLabel"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Camera</div>
                 </div>
                 <div class="col-xs-6">
-                  <button id="cameraParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
+                  <button id="cameraParamsCopy" type="button" class="btn btn-default btn-sm text-center" style="" href="#" data-placement="bottom" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span> Copy as JavaScript</button>
                 </div>
               </div>
               <br>
@@ -298,8 +298,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraFOV" class="form-control fov" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraFOVRefresh" type="button" class="btn btn-default refreshBtn fovBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="cameraFOVCopy" type="button" class="btn btn-default copyBtn fovBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraFOVRefresh" type="button" class="btn btn-default refreshBtn fovBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraFOVCopy" type="button" class="btn btn-default copyBtn fovBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -311,8 +311,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraHeading" class="form-control heading" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraHeadingRefresh" type="button" class="btn btn-default refreshBtn headingBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="cameraHeadingCopy" type="button" class="btn btn-default copyBtn headingBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraHeadingRefresh" type="button" class="btn btn-default refreshBtn headingBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraHeadingCopy" type="button" class="btn btn-default copyBtn headingBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -324,8 +324,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraTilt" class="form-control tilt" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraTiltRefresh" type="button" class="btn btn-default refreshBtn tiltBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="cameraTiltCopy" type="button" class="btn btn-default copyBtn tiltBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraTiltRefresh" type="button" class="btn btn-default refreshBtn tiltBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraTiltCopy" type="button" class="btn btn-default copyBtn tiltBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -337,8 +337,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraLatLong" class="form-control coord latLng" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraLatLongRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="centerLatLongCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -350,8 +350,8 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraWebMerc" class="form-control coord webMerc" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="cameraMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraMercRefresh" type="button" class="btn btn-default refreshBtn coordsBtn" data-tooltip="tip" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraMercCopy" type="button" class="btn btn-default copyBtn coordsBtn" style="border-left:0px !important" data-tooltip="tip" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
@@ -363,13 +363,13 @@
                   <div class="input-group input-group-sm">
                     <input type="text" id="cameraZVal" class="form-control zee" aria-label="Copy"></input>
                     <div class="input-group-btn">
-                      <button id="cameraZeeCopy" type="button" class="btn btn-default refreshBtn zeeBtn" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
-                      <button id="cameraZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
+                      <button id="cameraZeeCopy" type="button" class="btn btn-default refreshBtn zeeBtn" data-tooltip="tip" data-placement="top" title="Refresh map"><span class="glyphicon glyphicon-refresh"></span></button>
+                      <button id="cameraZeeCopy" type="button" class="btn btn-default copyBtn zeeBtn" style="border-left:0px !important" data-tooltip="tip" data-placement="top" title="Copy" data-toggle="modal" data-target="#copyModal"><span class="glyphicon glyphicon-copy"></span></button>
                     </div>
                   </div>
                 </div>
               </div>
-
+              <br>
             <!-- </div> -->
             </span>
           </div>
